@@ -1,4 +1,3 @@
-
 let players = {};
 let effects = {};
 let categories = ["Bass", "Drums", "Lead", "Chords", "Percussion", "EFX"];
@@ -59,7 +58,6 @@ let wetDrySliders = {};
 let currentPlayers = {};
 let currentEffects = {};
 let limiter = new Tone.Limiter(-.5).toDestination();
-
 let allLoaded = false;
 
 let loadCount = 0;
@@ -185,11 +183,6 @@ function setupInterface() {
     let volumeContainer = createElement("div");
     volumeContainer.addClass("volume");
     volumeContainer.parent(categoryContainer);
-    
-    let volumeLabel = createElement("p", "Volume");
-volumeLabel.parent(volumeContainer);
-volumeLabel.style("color", "#f708f7");
-volumeLabel.style("font-size", "16px");
 
     let volumeSlider = createSlider(-60, 0, 0);
     volumeSlider.parent(volumeContainer);
@@ -208,11 +201,6 @@ volumeLabel.style("font-size", "16px");
     effectsContainer.addClass("effects");
     effectsContainer.parent(categoryContainer);
 
-    let effectsLabel = createElement("p", "Effects");
-effectsLabel.parent(effectsContainer);
-effectsLabel.style("color", "#f708f7");
-effectsLabel.style("font-size", "16px");
-    
     let effectsSelect = createSelect();
     effectsSelect.parent(effectsContainer);
     effectsSelect.style("background", "#FFFFFF");
@@ -259,11 +247,6 @@ effectsLabel.style("font-size", "16px");
       }
     });
   });
-  
-  let playlabel = createElement("p", "Press Play Twice On Mobile");
-
-playlabel.style("color", "#f708f7");
-playlabel.style("font-size", "16px");
 
   let playButton = createButton("Play");
 playButton.style("background-color", "#02e1e8"); // Green background
@@ -280,7 +263,6 @@ playButton.style("border-radius", "5px"); // Rounded corners
 playButton.mousePressed(async () => {
   if (Tone.context.state !== "running") {
     await Tone.start();
-    unmute(Tone.context); // Call unmute function here
   }
 
   // Unmute the current player for each category when the "Play" button is pressed
